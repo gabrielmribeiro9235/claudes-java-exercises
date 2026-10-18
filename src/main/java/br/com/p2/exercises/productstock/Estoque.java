@@ -1,6 +1,7 @@
 package br.com.p2.exercises.productstock;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +37,10 @@ public class Estoque {
 
     public double freteTotal() {
         return quantidades.entrySet().stream().filter(e -> e.getValue() > 0).mapToDouble(e -> e.getKey().frete()).sum();
+    }
+
+    public Iterator<Produto> iterador() {
+        return quantidades.keySet().iterator();
     }
 
     public void removerEsgotados() {
