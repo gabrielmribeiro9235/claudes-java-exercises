@@ -30,6 +30,10 @@ public class Estoque {
         quantidades.put(produto, quantidade);
     }
 
+    public List<Produto> maisBaratosQue(double limite) {
+        return quantidades.keySet().stream().filter(p -> p.getPreco() < limite).toList();
+    }
+
     public void removerEsgotados() {
         List<Produto> produtosZerados = quantidades.keySet().stream().filter(q -> quantidades.get(q) == 0).toList();
 
