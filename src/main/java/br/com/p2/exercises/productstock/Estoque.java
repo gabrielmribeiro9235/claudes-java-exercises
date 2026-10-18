@@ -1,10 +1,11 @@
 package br.com.p2.exercises.productstock;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Estoque {
-    private Map<Produto, Integer> quantidades = new HashMap<>();
+    private final Map<Produto, Integer> quantidades = new HashMap<>();
 
     public Map<Produto, Integer> getQuantidades() {
         return quantidades;
@@ -15,10 +16,10 @@ public class Estoque {
     }
 
     public void removerEsgotados() {
-        for (Produto p : quantidades.keySet()) {
-            if (quantidades.get(p) == 0) {
-                quantidades.remove(p);
-            }
+        List<Produto> produtosZerados = quantidades.keySet().stream().filter(q -> quantidades.get(q) == 0).toList();
+
+        for (Produto produto : produtosZerados) {
+            quantidades.remove(produto);
         }
     }
 
