@@ -15,6 +15,12 @@ public class Estoque {
         return quantidades.size();
     }
 
+    Produto buscarPorCodigo(String codigo) {
+        if (codigo == null) return null;
+
+        return quantidades.keySet().stream().filter(p -> codigo.equals(p.getCodigo())).findFirst().orElse(null);
+    }
+
     public void adicionar(Produto produto, int quantidade) {
         if (quantidades.containsKey(produto)) {
             int qtdAtual = quantidades.get(produto);
