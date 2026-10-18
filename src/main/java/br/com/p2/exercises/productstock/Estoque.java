@@ -34,6 +34,10 @@ public class Estoque {
         return quantidades.keySet().stream().filter(p -> p.getPreco() < limite).toList();
     }
 
+    public double freteTotal() {
+        return quantidades.entrySet().stream().filter(e -> e.getValue() > 0).mapToDouble(e -> e.getKey().frete()).sum();
+    }
+
     public void removerEsgotados() {
         List<Produto> produtosZerados = quantidades.keySet().stream().filter(q -> quantidades.get(q) == 0).toList();
 
