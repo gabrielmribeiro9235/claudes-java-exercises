@@ -1,9 +1,11 @@
 package br.com.p2.exercises.productstock;
 
+import java.util.Objects;
+
 public abstract class Produto {
-    private String codigo;
-    private String nome;
-    private double preco;
+    private final String codigo;
+    private final String nome;
+    private final double preco;
 
     public Produto(String codigo, String nome, double preco) {
         this.codigo = codigo;
@@ -27,10 +29,13 @@ public abstract class Produto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Produto outro = (Produto) o;
-        return codigo == outro.codigo;
+        if (!(o instanceof Produto produto)) return false;
+        return Objects.equals(codigo, produto.codigo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(codigo);
     }
 
     @Override
