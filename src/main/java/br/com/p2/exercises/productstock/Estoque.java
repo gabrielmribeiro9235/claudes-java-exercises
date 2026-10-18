@@ -7,8 +7,12 @@ import java.util.Map;
 public class Estoque {
     private final Map<Produto, Integer> quantidades = new HashMap<>();
 
-    public Map<Produto, Integer> getQuantidades() {
-        return quantidades;
+    public int quantidadeDe(Produto p) {
+        return quantidades.get(p);
+    }
+
+    public int tiposDeProdutos() {
+        return quantidades.size();
     }
 
     public void adicionar(Produto produto, int quantidade) {
