@@ -12,7 +12,7 @@ public class Estoque {
         return quantidades.get(p);
     }
 
-    public int tiposDeProdutos() {
+    public int tiposDeProduto() {
         return quantidades.size();
     }
 
