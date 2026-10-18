@@ -1,7 +1,7 @@
 package br.com.p2.exercises.productstock;
 
 public class ProdutoEletronico extends Produto {
-    private int garantiaMeses;
+    private final int garantiaMeses;
 
     public ProdutoEletronico(String codigo, String nome, double preco, int garantiaMeses) {
         super(codigo, nome, preco);
@@ -14,6 +14,6 @@ public class ProdutoEletronico extends Produto {
 
     @Override
     public double frete() {
-        return preco * 0.02;
+        return getPreco() * 0.02;
     }
 }
