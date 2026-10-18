@@ -12,6 +12,11 @@ public class Estoque {
     }
 
     public void adicionar(Produto produto, int quantidade) {
+        if (quantidades.containsKey(produto)) {
+            int qtdAtual = quantidades.get(produto);
+            quantidade += qtdAtual;
+        }
+
         quantidades.put(produto, quantidade);
     }
 
