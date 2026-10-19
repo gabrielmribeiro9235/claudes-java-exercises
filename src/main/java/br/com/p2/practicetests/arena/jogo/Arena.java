@@ -78,7 +78,10 @@ public class Arena {
     private String ataque(String atacante, String defensor) {
         StringBuilder builder = new StringBuilder();
 
-        for (Personagem personagem : times.get(atacante)) {
+        Iterator<Personagem> iterator = iterador(atacante);
+        while (iterator.hasNext()) {
+            Personagem personagem = iterator.next();
+
             if (timeDerrotado(defensor)) return builder.toString();
 
             if (!personagem.estaVivo()) continue;
