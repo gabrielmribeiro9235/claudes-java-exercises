@@ -2,9 +2,7 @@ package br.com.p3.exercises.gym;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 public class SqliteAlunoRepository {
     private static final String URL = "jdbc:sqlite:src/main/java/br/com/p3/exercises/gym/academia.db";
@@ -87,5 +85,61 @@ public class SqliteAlunoRepository {
         }
 
         return Optional.empty();
+    }
+
+    public List<Aluno> getAlunos() {
+        String sql = "SELECT * FROM aluno";
+
+        try (Connection connection = DriverManager.getConnection(URL);
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            List<Aluno> alunos = new ArrayList<>();
+
+            while (rs.next()) {
+                Plano plano = planoRepository.getPlano(rs.getInt("plano_id"))
+                        .orElseThrow(() -> new NoSuchElementException("O plano do aluno não foi encontrado"));
+
+                alunos.add(new Aluno(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        LocalDate.parse(rs.getString("data_nascimento")),
+                        rs.getInt("ativo") == 1,
+                        plano
+                ));
+            }
+
+            return alunos;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Aluno> getAlunosPorPlano(Plano plano) {
+        Objects.requireNonNull(plano, "Plano não pode ser nulo.");
+        String sql = """
+                SELECT a.id, a.nome, a.data_nascimento, a.ativo, a.plano_id
+                    FROM aluno a JOIN plano p ON p.id = ?
+                """;
+
+        try (Connection connection = DriverManager.getConnection(URL);
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1,  plano.getId());
+            ResultSet rs = stmt.executeQuery();
+            List<Aluno> alunos = new ArrayList<>();
+
+            while (rs.next()) {
+                alunos.add(new Aluno(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        LocalDate.parse(rs.getString("data_nascimento")),
+                        rs.getInt("ativo") == 1,
+                        plano
+                ));
+            }
+
+            return alunos;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
