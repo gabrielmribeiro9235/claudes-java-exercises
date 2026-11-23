@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 public class ProductStock {
-    private static final String URL = "jdbc:sqlite:src/main/java/br/com/p3/exercises/productstock/stock.db";
+    private static final String URL = "jdbc:sqlite:src/main/java/br/com/p3/exercises/productstock/stock.db?foreign_keys=on";
 
     public void cadastrarCategoria(Categoria categoria) {
         Objects.requireNonNull(categoria, "Categoria não pode ser nula.");

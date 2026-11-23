@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DatabaseInitializer {
-    private static final String URL = "jdbc:sqlite:src/main/java/br/com/p3/exercises/productstock/stock.db";
+    private static final String URL = "jdbc:sqlite:src/main/java/br/com/p3/exercises/productstock/stock.db?foreign_keys=on";
 
     private DatabaseInitializer() {}
 
