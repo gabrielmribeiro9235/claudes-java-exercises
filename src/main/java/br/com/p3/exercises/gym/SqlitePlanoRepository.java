@@ -55,6 +55,7 @@ public class SqlitePlanoRepository {
 
             if (rs.next()) {
                 return Optional.of(new Plano(
+                        rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getDouble("mensalidade")
                 ));
@@ -76,6 +77,7 @@ public class SqlitePlanoRepository {
 
             while (rs.next()) {
                 planos.add(new Plano(
+                        rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getDouble("mensalidade")
                 ));
