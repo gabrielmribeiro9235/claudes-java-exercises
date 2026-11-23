@@ -111,4 +111,19 @@ public class SqlitePlanoRepository {
             throw new RuntimeException(e);
         }
     }
+
+    public double faturamento() {
+        String sql = "SELECT SUM(mensalidade) as faturamento FROM aluno a LEFT JOIN plano p ON a.ativo = 1 AND p.id = a.plano_id";
+
+        try (Connection connection = DriverManager.getConnection(URL);
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getDouble("faturamento");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0.0;
+    }
 }
