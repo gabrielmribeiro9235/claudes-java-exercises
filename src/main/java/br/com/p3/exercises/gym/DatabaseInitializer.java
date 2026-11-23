@@ -21,6 +21,8 @@ public class DatabaseInitializer {
 
     private static void createTables() throws SQLException {
         String sql = """
+                DROP TABLE IF EXISTS aluno;
+                DROP TABLE IF EXISTS plano;
                 CREATE TABLE IF NOT EXISTS plano (
                     id             INTEGER PRIMARY KEY AUTOINCREMENT,
                     nome           TEXT NOT NULL,
