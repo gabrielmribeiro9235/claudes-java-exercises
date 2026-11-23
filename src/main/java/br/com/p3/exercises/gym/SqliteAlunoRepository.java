@@ -117,8 +117,8 @@ public class SqliteAlunoRepository {
     public List<Aluno> getAlunosPorPlano(Plano plano) {
         Objects.requireNonNull(plano, "Plano não pode ser nulo.");
         String sql = """
-                SELECT a.id, a.nome, a.data_nascimento, a.ativo, a.plano_id
-                    FROM aluno a JOIN plano p ON p.id = ?
+                SELECT a.id, a.nome, a.data_nascimento, a.ativo, p.id
+                    FROM aluno a JOIN plano p ON p.id = a.plano_id AND p.id = ?
                 """;
 
         try (Connection connection = DriverManager.getConnection(URL);
