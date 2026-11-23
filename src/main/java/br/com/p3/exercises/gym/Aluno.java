@@ -17,6 +17,14 @@ public class Aluno {
         this.dataNascimento = dataNascimento;
     }
 
+    public Aluno(int id, String nome, LocalDate dataNascimento, boolean ativo, Plano plano) {
+        this.id = id;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.ativo = ativo;
+        this.plano = plano;
+    }
+
     public void cadastrarPlano(Plano plano) {
         if (this.plano != null && ativo) {
             throw new IllegalStateException("Aluno já tem um plano cadastrado");
