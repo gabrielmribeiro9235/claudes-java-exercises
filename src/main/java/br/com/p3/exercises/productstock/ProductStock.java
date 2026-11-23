@@ -52,7 +52,7 @@ public class ProductStock {
     }
 
     public Optional<Categoria> getCategoria(int id) {
-        String sql = "SELECT * FROM categoria WHERE nome = ?";
+        String sql = "SELECT * FROM categoria WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(URL);
              PreparedStatement stmt = connection.prepareStatement(sql)) {
