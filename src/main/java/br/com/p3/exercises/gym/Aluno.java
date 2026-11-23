@@ -41,14 +41,6 @@ public class Aluno {
         }
     }
 
-    public void cancelarPlano() {
-        if (this.plano == null || !ativo) {
-            throw new IllegalStateException("Aluno não tem plano vigente");
-        }
-        plano = null;
-        ativo = false;
-    }
-
     public void desativarAluno() {
         if (!ativo) {
             throw new IllegalStateException("Aluno já está desativado");
