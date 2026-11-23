@@ -67,6 +67,29 @@ public class SqlitePlanoRepository {
         return Optional.empty();
     }
 
+    public Optional<Plano> getPlano(int id) {
+        String sql = "SELECT * FROM plano WHERE id = ?";
+
+        try (Connection connection = DriverManager.getConnection(URL);
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return Optional.of(new Plano(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getDouble("mensalidade")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return Optional.empty();
+    }
+
     public List<Plano> getPlanos() {
         String sql = "SELECT * FROM plano";
 
