@@ -1,5 +1,7 @@
 package br.com.p3.exercises.veterinaryclinic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Tutor {
@@ -8,6 +10,7 @@ public class Tutor {
     private final int id;
     private final String nome;
     private String telefone;
+    private final List<Pet> pets;
 
     public Tutor(String nome, String telefone) {
         this(ID_ATUAL++, nome, telefone);
@@ -20,6 +23,7 @@ public class Tutor {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
+        pets = new ArrayList<>();
     }
 
     @Override
@@ -57,5 +61,9 @@ public class Tutor {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public List<Pet> getPets() {
+        return List.copyOf(pets);
     }
 }
