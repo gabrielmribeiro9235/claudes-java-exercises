@@ -36,4 +36,14 @@ public abstract sealed class Pet permits Cachorro, Gato, Outras {
     public Tutor getTutor() {
         return tutor;
     }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", tutor=" + tutor +
+                ", especie='" + especie() + '\'' +
+                '}';
+    }
 }
