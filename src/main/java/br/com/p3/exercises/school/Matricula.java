@@ -38,6 +38,22 @@ public class Matricula {
         this.nota2 = nota2;
     }
 
+    public double getMedia() {
+        return (nota1 + nota2) / 2;
+    }
+
+    public String getSituacao() {
+        if (nota1 == 0 || nota2 == 0) {
+            return "em andamento";
+        }
+
+        if (getMedia() >= 6.0) return "aprovado";
+
+        if (getMedia() >= 4.0) return "recuperação";
+
+        return "reprovado";
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
