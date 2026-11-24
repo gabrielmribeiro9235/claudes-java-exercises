@@ -28,7 +28,11 @@ public class Emprestimo {
     }
 
     public double calcularMulta() {
-        return 2.0 *  ChronoUnit.DAYS.between(dataEmprestimo, dataPrevista);
+        if (dataDevolucao != null && dataDevolucao.isBefore(dataPrevista)) {
+            return 0.0;
+        }
+
+        return 2.0 *  ChronoUnit.DAYS.between(dataPrevista, dataDevolucao);
     }
 
     @Override
