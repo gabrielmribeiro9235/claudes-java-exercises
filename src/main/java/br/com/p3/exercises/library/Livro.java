@@ -24,7 +24,7 @@ public class Livro {
 
     public void setExemplaresDisponiveis(int exemplaresDisponiveis) {
         if (exemplaresDisponiveis < 0) {
-            throw new IllegalArgumentException("Exemplares disnponíveis não pode ser negativo.");
+            throw new IllegalArgumentException("Exemplares disponíveis não pode ser negativo.");
         }
         this.exemplaresDisponiveis = exemplaresDisponiveis;
     }
