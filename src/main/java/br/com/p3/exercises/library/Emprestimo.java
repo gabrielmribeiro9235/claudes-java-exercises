@@ -1,7 +1,6 @@
 package br.com.p3.exercises.library;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
@@ -13,13 +12,13 @@ public class Emprestimo {
     private final Usuario usuario;
     private final LocalDate dataEmprestimo;
     private final LocalDate dataPrevista;
-    private LocalTime dataDevolucao;
+    private LocalDate dataDevolucao;
 
-    public Emprestimo(Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataPrevista, LocalTime dataDevolucao) {
+    public Emprestimo(Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataPrevista, LocalDate dataDevolucao) {
         this(ID_ATUAL++, livro, usuario, dataEmprestimo, dataPrevista, dataDevolucao);
     }
 
-    public Emprestimo(int id, Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataPrevista, LocalTime dataDevolucao) {
+    public Emprestimo(int id, Livro livro, Usuario usuario, LocalDate dataEmprestimo, LocalDate dataPrevista, LocalDate dataDevolucao) {
         this.id = id;
         this.livro = livro;
         this.usuario = usuario;
@@ -76,11 +75,11 @@ public class Emprestimo {
         return dataPrevista;
     }
 
-    public LocalTime getDataDevolucao() {
+    public LocalDate getDataDevolucao() {
         return dataDevolucao;
     }
 
-    public void setDataDevolucao(LocalTime dataDevolucao) {
+    public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 
