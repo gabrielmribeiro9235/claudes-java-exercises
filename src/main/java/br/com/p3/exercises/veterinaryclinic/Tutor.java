@@ -26,6 +26,11 @@ public class Tutor {
         pets = new ArrayList<>();
     }
 
+    public void adicionarPet(Pet pet) {
+        Objects.requireNonNull(pet, "Pet não pode ser nulo.");
+        pets.add(pet);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
