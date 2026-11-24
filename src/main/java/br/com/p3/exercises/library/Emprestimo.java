@@ -86,14 +86,4 @@ public class Emprestimo {
     public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
-
-    /*
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
- livro_id INTEGER NOT NULL REFERENCES livro(id),
- usuario_id INTEGER NOT NULL REFERENCES usuario(id),
- data_emprestimo TEXT NOT NULL,
- data_prevista TEXT NOT NULL,
- data_devolucao TEXT
-
-     */
 }
