@@ -24,4 +24,16 @@ public abstract sealed class Pet permits Cachorro, Gato, Outras {
     }
 
     public abstract String especie();
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Tutor getTutor() {
+        return tutor;
+    }
 }
