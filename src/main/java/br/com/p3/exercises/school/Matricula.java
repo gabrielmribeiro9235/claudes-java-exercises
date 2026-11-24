@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Matricula {
     private final Aluno aluno;
     private final Disciplina disciplina;
-    private double nota1;
-    private double nota2;
+    private Double nota1;
+    private Double nota2;
 
     public Matricula(Aluno aluno, Disciplina disciplina) {
         Objects.requireNonNull(disciplina, "Disciplina não pode ser nula.");
@@ -15,7 +15,7 @@ public class Matricula {
         this.disciplina = disciplina;
     }
 
-    public Matricula(Aluno aluno, Disciplina disciplina, double nota1, double nota2) {
+    public Matricula(Aluno aluno, Disciplina disciplina, Double nota1, Double nota2) {
         Objects.requireNonNull(disciplina, "Disciplina não pode ser nula.");
         Objects.requireNonNull(aluno, "Aluno não pode ser nulo.");
         this.aluno = aluno;
@@ -24,15 +24,15 @@ public class Matricula {
         setNota2(nota2);
     }
 
-    public void setNota1(double nota1) {
-        if (nota1 < 0 || nota1 > 10) {
+    public void setNota1(Double nota1) {
+        if (nota1 != null && (nota1 < 0 || nota1 > 10)) {
             throw new IllegalArgumentException("A nota deve ser um número de 0 a 10");
         }
         this.nota1 = nota1;
     }
 
-    public void setNota2(double nota2) {
-        if (nota2 < 0 || nota2 > 10) {
+    public void setNota2(Double nota2) {
+        if (nota2 != null && (nota2 < 0 || nota2 > 10)) {
             throw new IllegalArgumentException("A nota deve ser um número de 0 a 10");
         }
         this.nota2 = nota2;
@@ -43,7 +43,7 @@ public class Matricula {
     }
 
     public String getSituacao() {
-        if (nota1 == 0 || nota2 == 0) {
+        if (nota1 == null || nota2 == null) {
             return "em andamento";
         }
 
